@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Predict Model</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='index_style.css') }}">
+</head>
+<body>
+  <div class="background"></div>
+  <div class="glass-container">
+    <h2>Prediction Results</h2>
+    {% if predictions %}
+      <div class="result">
+        {{ predictions | safe }}
+        <a class="download" href="/download_predictions">Download Predictions CSV</a>
+      </div>
+    {% else %}
+      <p class="error">⚠️ Oops! You cannot access this directly. Please train a model first.</p>
+    {% endif %}
+  </div>
+</body>
+</html>

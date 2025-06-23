@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Train Model</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='index_style.css') }}">
+</head>
+<body>
+  <div class="background"></div>
+  <div class="glass-container">
+    <h2>🚀 Train Your Machine Learning Model</h2>
+    <form method="POST" enctype="multipart/form-data" class="train-form">
+      <label for="file">Upload Training CSV:</label>
+      <input type="file" name="file" id="file" required>
+
+      <label for="target">Target Column Name:</label>
+      <input type="text" name="target" id="target" placeholder="Enter target column..." required>
+
+      <label for="model_type">Select Model Type:</label>
+      <select name="model_type" id="model_type" required>
+        <option value="classification">Classification</option>
+        <option value="regression">Regression</option>
+      </select>
+
+      <label class="checkbox">
+        <input type="checkbox" name="save_model" value="yes"> Save & Download Model
+      </label>
+
+      <button type="submit">🚀 Train Model</button>
+    </form>
+
+    {% if result %}
+    <div class="result">
+      <h3>✅ Training Completed!</h3>
+      <p><strong>{{ result.score }}</strong></p>
+      {% if result.cm %}
+        <p><strong>Confusion Matrix:</strong> {{ result.cm }}</p>
+      {% endif %}
+      {% if result.model_saved %}
+        <a class="download" href="/download_model/{{ result.model_saved }}">Download Trained Model</a>
+      {% endif %}
+
+      <h3>🎯 Predict with This Model:</h3>
+      <form action="/predict" method="POST" enctype="multipart/form-data" class="train-form">
+        <label for="predict_file">Upload Prediction CSV:</label>
+        <input type="file" name="predict_file" id="predict_file" required>
+        <button type="submit">🔮 Predict Now</button>
+      </form>
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
