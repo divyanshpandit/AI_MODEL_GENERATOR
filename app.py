@@ -50,7 +50,7 @@ def train():
                 model.fit(X_train, y_train)
                 y_pred = model.predict(X_test)
                 score = accuracy_score(y_test, y_pred)
-                result['score'] = f"Accuracy: {score:.2f}"
+                result['score'] = f"Accuracy: {score*100 :.2f} %"
                 result['cm'] = confusion_matrix(y_test, y_pred).tolist()
 
                 if save_model == 'yes':
