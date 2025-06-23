@@ -42,7 +42,7 @@ This repository contains a Flask-based Machine Learning web application that all
 
 ---
 
-3. **Steps to Use:**
+### 3. **Steps to Use:**
 
 ### 🔹 Training:
 - Upload the training dataset CSV.
@@ -70,7 +70,7 @@ This repository contains a Flask-based Machine Learning web application that all
 
 ## Author
 
-Made by [Divyanshu] - For educational and practical machine learning deployment purposes.
+Made by Divyanshu - For educational and practical machine learning deployment purposes.
 
 
 
